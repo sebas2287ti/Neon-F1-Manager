@@ -12,7 +12,7 @@ public class PilotF1 {
     private int victorias;
     private int poles;
     private int N_campeonatos;
-    private int total_Carrers;
+    private int total_Carreras;
 
     public PilotF1(int id, int año, String equipo, String nombre, int n_Piloto, boolean pilotoPrincipal, boolean ganadorMundial, int posicionCampeonato, int victorias, int poles, int N_campeonatos, int total_Carrers) {
         this.id = id;
@@ -26,7 +26,7 @@ public class PilotF1 {
         this.victorias = victorias;
         this.poles = poles;
         this.N_campeonatos = N_campeonatos;
-        this.total_Carrers = total_Carrers;
+        this.total_Carreras = total_Carrers;
     }
 
     public int getId() {
@@ -106,10 +106,10 @@ public class PilotF1 {
         this.N_campeonatos = N_campeonatos;
     }
 
-    public int getTotal_Carrers() {
-        return total_Carrers;
+    public int getTotal_Carreras() {
+        return total_Carreras;
     }
-    public void setTotal_Carrers(int total_Carrers) {
-        this.total_Carrers = total_Carrers;
+    public void setTotal_Carreras(int total_Carreras) {
+        this.total_Carreras = total_Carreras;
     }
 }
