@@ -1,19 +1,19 @@
 package com.NeonF1.domain.entities;
 
 public class PilotF1 {
-    private int id;
-    private int año;
+    private Integer id;
+    private Integer año;
     private String equipo;
     private String nombre;
-    private int n_Piloto;
+    private Integer n_Piloto;
     private boolean pilotoPrincipal;
     private boolean ganadorMundial;
-    private int posicionCampeonato;
-    private int puntosCampeonato;
-    private int victorias;
-    private int poles;
-    private int N_campeonatos;
-    private int total_Carreras;
+    private Integer posicionCampeonato;
+    private Integer puntosCampeonato;
+    private Integer victorias;
+    private Integer poles;
+    private Integer N_campeonatos;
+    private Integer total_Carreras;
 
     public PilotF1(int id, int año, String equipo, String nombre, int n_Piloto, boolean pilotoPrincipal, boolean ganadorMundial, int posicionCampeonato, int victorias, int poles, int N_campeonatos, int total_Carrers) {
         this.id = id;
