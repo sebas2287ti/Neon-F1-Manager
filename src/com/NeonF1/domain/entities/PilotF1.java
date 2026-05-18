@@ -6,8 +6,8 @@ public class PilotF1 {
     private String equipo;
     private String nombre;
     private Integer n_Piloto;
-    private boolean pilotoPrincipal;
-    private boolean ganadorMundial;
+    private Boolean pilotoPrincipal;
+    private Boolean ganadorMundial;
     private Integer posicionCampeonato;
     private Integer puntosCampeonato;
     private Integer victorias;
@@ -65,14 +65,14 @@ public class PilotF1 {
         this.n_Piloto = n_Piloto;
     }
 
-    public boolean getPilotoPrincipal() {
+    public Boolean getPilotoPrincipal() {
         return pilotoPrincipal;
     }
     public void setPilotoPrincipal(boolean pilotoPrincipal) {
         this.pilotoPrincipal = pilotoPrincipal;
     }
 
-    public boolean getGanadorMundial() {
+    public Boolean getGanadorMundial() {
         return ganadorMundial;
     }
     public void setGanadorMundial(boolean ganadorMundial) {
