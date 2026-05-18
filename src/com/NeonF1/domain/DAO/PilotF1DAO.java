@@ -3,6 +3,7 @@ package com.NeonF1.domain.DAO;
 import com.NeonF1.domain.entities.PilotF1;
 import com.NeonF1.infrastructure.persistence.DataConnection;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -36,7 +37,13 @@ public class PilotF1DAO {
         }
         return true;
     }
-    public static ArrayList BuscarPilotF1 () {
-        return new ArrayList(null);
+
+    public static List BuscarPilotF1 (PilotF1 FiltrosPilotF1) {
+        String StringBuscarPilotF1 = "SELECT * FROM \"DatosF1\" WHERE 1 = 1";
+
+
+
+
+        return new List();
     }
 }
