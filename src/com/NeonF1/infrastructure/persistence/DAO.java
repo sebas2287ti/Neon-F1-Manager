@@ -5,6 +5,4 @@ import java.sql.SQLException;
 
 public class DAO {
 
-
-    public static SQLData getSQLData() throws SQLException {}
 }

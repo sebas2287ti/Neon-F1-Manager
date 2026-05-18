@@ -1,4 +1,115 @@
 package com.NeonF1.domain.entities;
 
 public class PilotF1 {
+    private int id;
+    private int año;
+    private String equipo;
+    private String nombre;
+    private int n_Piloto;
+    private boolean pilotoPrincipal;
+    private boolean ganadorMundial;
+    private int posicionCampeonato;
+    private int victorias;
+    private int poles;
+    private int N_campeonatos;
+    private int total_Carrers;
+
+    public PilotF1(int id, int año, String equipo, String nombre, int n_Piloto, boolean pilotoPrincipal, boolean ganadorMundial, int posicionCampeonato, int victorias, int poles, int N_campeonatos, int total_Carrers) {
+        this.id = id;
+        this.año = año;
+        this.equipo = equipo;
+        this.nombre = nombre;
+        this.n_Piloto = n_Piloto;
+        this.pilotoPrincipal = pilotoPrincipal;
+        this.ganadorMundial = ganadorMundial;
+        this.posicionCampeonato = posicionCampeonato;
+        this.victorias = victorias;
+        this.poles = poles;
+        this.N_campeonatos = N_campeonatos;
+        this.total_Carrers = total_Carrers;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAño() {
+        return año;
+    }
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    public String getEquipo() {
+        return equipo;
+    }
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getN_Piloto() {
+        return n_Piloto;
+    }
+    public void setN_Piloto(int n_Piloto) {
+        this.n_Piloto = n_Piloto;
+    }
+
+    public boolean getPilotoPrincipal() {
+        return pilotoPrincipal;
+    }
+    public void setPilotoPrincipal(boolean pilotoPrincipal) {
+        this.pilotoPrincipal = pilotoPrincipal;
+    }
+
+    public boolean getGanadorMundial() {
+        return ganadorMundial;
+    }
+    public void setGanadorMundial(boolean ganadorMundial) {
+        this.ganadorMundial = ganadorMundial;
+    }
+
+    public int getPosicionCampeonato() {
+        return posicionCampeonato;
+    }
+    public void setPosicionCampeonato(int posicionCampeonato) {
+        this.posicionCampeonato = posicionCampeonato;
+    }
+
+    public int getVictorias() {
+        return victorias;
+    }
+    public void setVictorias(int victorias) {
+        this.victorias = victorias;
+    }
+
+    public int getPoles() {
+        return poles;
+    }
+    public void setPoles(int poles) {
+        this.poles = poles;
+    }
+
+    public int getN_campeonatos() {
+        return N_campeonatos;
+    }
+    public void setN_campeonatos(int N_campeonatos) {
+        this.N_campeonatos = N_campeonatos;
+    }
+
+    public int getTotal_Carrers() {
+        return total_Carrers;
+    }
+    public void setTotal_Carrers(int total_Carrers) {
+        this.total_Carrers = total_Carrers;
+    }
 }
