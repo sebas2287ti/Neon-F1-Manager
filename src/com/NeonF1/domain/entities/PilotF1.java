@@ -30,6 +30,10 @@ public class PilotF1 {
         this.total_Carreras = total_Carrers;
     }
 
+    public PilotF1() {
+
+    }
+
     public Integer getId() {
         return id;
     }
