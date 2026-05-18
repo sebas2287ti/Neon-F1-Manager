@@ -9,6 +9,7 @@ public class PilotF1 {
     private boolean pilotoPrincipal;
     private boolean ganadorMundial;
     private int posicionCampeonato;
+    private int puntosCampeonato;
     private int victorias;
     private int poles;
     private int N_campeonatos;
@@ -83,6 +84,13 @@ public class PilotF1 {
     }
     public void setPosicionCampeonato(int posicionCampeonato) {
         this.posicionCampeonato = posicionCampeonato;
+    }
+
+    public int getPuntosCampeonato() {
+        return puntosCampeonato;
+    }
+    public void setPuntosCampeonato(int puntosCampeonato) {
+        this.puntosCampeonato = puntosCampeonato;
     }
 
     public int getVictorias() {
