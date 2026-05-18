@@ -15,7 +15,7 @@ public class PilotF1 {
     private Integer N_campeonatos;
     private Integer total_Carreras;
 
-    public PilotF1(int id, int año, String equipo, String nombre, int n_Piloto, boolean pilotoPrincipal, boolean ganadorMundial, int posicionCampeonato, int victorias, int poles, int N_campeonatos, int total_Carrers) {
+    public PilotF1(Integer id, Integer año, String equipo, String nombre, Integer n_Piloto, boolean pilotoPrincipal, boolean ganadorMundial, Integer posicionCampeonato, Integer victorias, Integer poles, Integer N_campeonatos, Integer total_Carrers) {
         this.id = id;
         this.año = año;
         this.equipo = equipo;
@@ -30,17 +30,17 @@ public class PilotF1 {
         this.total_Carreras = total_Carrers;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getAño() {
+    public Integer getAño() {
         return año;
     }
-    public void setAño(int año) {
+    public void setAño(Integer año) {
         this.año = año;
     }
 
@@ -58,10 +58,10 @@ public class PilotF1 {
         this.nombre = nombre;
     }
 
-    public int getN_Piloto() {
+    public Integer getN_Piloto() {
         return n_Piloto;
     }
-    public void setN_Piloto(int n_Piloto) {
+    public void setN_Piloto(Integer n_Piloto) {
         this.n_Piloto = n_Piloto;
     }
 
@@ -79,45 +79,45 @@ public class PilotF1 {
         this.ganadorMundial = ganadorMundial;
     }
 
-    public int getPosicionCampeonato() {
+    public Integer getPosicionCampeonato() {
         return posicionCampeonato;
     }
-    public void setPosicionCampeonato(int posicionCampeonato) {
+    public void setPosicionCampeonato(Integer posicionCampeonato) {
         this.posicionCampeonato = posicionCampeonato;
     }
 
-    public int getPuntosCampeonato() {
+    public Integer getPuntosCampeonato() {
         return puntosCampeonato;
     }
-    public void setPuntosCampeonato(int puntosCampeonato) {
+    public void setPuntosCampeonato(Integer puntosCampeonato) {
         this.puntosCampeonato = puntosCampeonato;
     }
 
-    public int getVictorias() {
+    public Integer getVictorias() {
         return victorias;
     }
-    public void setVictorias(int victorias) {
+    public void setVictorias(Integer victorias) {
         this.victorias = victorias;
     }
 
-    public int getPoles() {
+    public Integer getPoles() {
         return poles;
     }
-    public void setPoles(int poles) {
+    public void setPoles(Integer poles) {
         this.poles = poles;
     }
 
-    public int getN_campeonatos() {
+    public Integer getN_campeonatos() {
         return N_campeonatos;
     }
-    public void setN_campeonatos(int N_campeonatos) {
+    public void setN_campeonatos(Integer N_campeonatos) {
         this.N_campeonatos = N_campeonatos;
     }
 
-    public int getTotal_Carreras() {
+    public Integer getTotal_Carreras() {
         return total_Carreras;
     }
-    public void setTotal_Carreras(int total_Carreras) {
+    public void setTotal_Carreras(Integer total_Carreras) {
         this.total_Carreras = total_Carreras;
     }
 }
