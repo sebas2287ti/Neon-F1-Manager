@@ -1,43 +1,35 @@
 package com.NeonF1.infrastructure.ui.window;
 
 import java.awt.*;
+import com.NeonF1.infrastructure.ui.components.Background;
 import com.NeonF1.infrastructure.ui.components.ControlerInterface;
 import com.NeonF1.infrastructure.ui.components.UiFactory;
 
 import javax.swing.*;
 
-public class StartPanel extends JPanel {
+public class StartPanel extends Background {
     private ControlerInterface controller;
 
     public StartPanel(ControlerInterface controller) {
+        super("/Image/FormulaPantallaInicio.jpeg");
         this.controller = controller;
 
         setLayout(null);
-        setBackground(new Color(15, 15, 15));
 
-        JButton botonHome = UiFactory.CrearBotom("⌂", 1170, 20, 50, 50, new Color(40, 40, 40), Color.WHITE, new Color(225, 6, 0));
-        JButton botonExit = UiFactory.CrearBotom("\uD83D\uDD0D", 1100, 20, 50, 50, new Color(40, 40, 40), Color.WHITE, new Color(225, 6, 0));
+        JButton botonHome = UiFactory.CrearBotom("⌂", 870, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
+        JButton botonExit = UiFactory.CrearBotom("\uD83D\uDD0D", 920, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
+        JButton Boton1 = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 970, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
+        JButton Boton2 = UiFactory.CrearBotom("\uD83D\uDE99", 1020, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
+        JButton Boton3 = UiFactory.CrearBotom("\uD83C\uDFC1", 1070, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
+
+
 
         add(botonHome);
         add(botonExit);
+        add(Boton1);
+        add(Boton2);
+        add(Boton3);
 
         botonHome.addActionListener(e -> System.exit(0));
-    }
-
-    private JButton crearBotonIcono(String simbolo, int x, int y) {
-        JButton btn = new JButton(simbolo);
-        btn.setBounds(x, y, 50, 50);
-        btn.setBackground(new Color(40, 40, 40));
-        btn.setForeground(Color.WHITE);
-        btn.setFont(new Font("SansSerif", Font.BOLD, 24));
-        btn.setFocusPainted(false);
-        btn.setBorder(BorderFactory.createLineBorder(new Color(225, 6, 0), 1));
-
-        btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void MouseSeleccionado(java.awt.event.MouseEvent e) { btn.setBackground(new Color(225, 6, 0)); }
-            public void MouseNoSeleccionado(java.awt.event.MouseEvent e) { btn.setBackground(new Color(40, 40, 40)); }
-        });
-
-        return btn;
     }
 }
