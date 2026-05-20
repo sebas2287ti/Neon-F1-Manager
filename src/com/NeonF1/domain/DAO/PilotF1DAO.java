@@ -3,13 +3,11 @@ package com.NeonF1.domain.DAO;
 import com.NeonF1.domain.entities.PilotF1;
 import com.NeonF1.infrastructure.persistence.DataConnection;
 
-import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class PilotF1DAO {
@@ -44,72 +42,72 @@ public class PilotF1DAO {
 
     public static List BuscarPilotF1(PilotF1 FiltrosPilotF1) {
         StringBuilder StringBuscarPilotF1 = new StringBuilder("SELECT * FROM \"DatosF1\" WHERE 1 = 1");
-        List<Object> Filtros = new ArrayList<>();
-        List<PilotF1> DBData = new ArrayList<>();
+        List<Object> ListaFiltros = new ArrayList<>();
+        List<PilotF1> ListaDBData = new ArrayList<>();
 
         if (FiltrosPilotF1.getAño() != null) {
             StringBuscarPilotF1.append(" AND \"Año\" = ?");
-            Filtros.add(FiltrosPilotF1.getAño().toString());
+            ListaFiltros.add(FiltrosPilotF1.getAño().toString());
         }
 
         if (FiltrosPilotF1.getEquipo() != null && !FiltrosPilotF1.getEquipo().trim().isEmpty()) {
             StringBuscarPilotF1.append(" AND \"Equipo\" ILIKE ?");
-            Filtros.add("%" + FiltrosPilotF1.getEquipo().trim() + "%");
+            ListaFiltros.add("%" + FiltrosPilotF1.getEquipo().trim() + "%");
         }
 
         if (FiltrosPilotF1.getNombre() != null && !FiltrosPilotF1.getNombre().trim().isEmpty()) {
             StringBuscarPilotF1.append(" AND \"Nombre\" ILIKE ?");
-            Filtros.add("%" + FiltrosPilotF1.getNombre().trim() + "%");
+            ListaFiltros.add("%" + FiltrosPilotF1.getNombre().trim() + "%");
         }
 
         if (FiltrosPilotF1.getN_Piloto() != null) {
             StringBuscarPilotF1.append(" AND \"N_Piloto\" = ?");
-            Filtros.add(FiltrosPilotF1.getN_Piloto());
+            ListaFiltros.add(FiltrosPilotF1.getN_Piloto());
         }
 
         if (FiltrosPilotF1.getPilotoPrincipal() != null) {
             StringBuscarPilotF1.append(" AND \"PilotoPrincipal\" = ?");
-            Filtros.add(FiltrosPilotF1.getPilotoPrincipal());
+            ListaFiltros.add(FiltrosPilotF1.getPilotoPrincipal());
         }
 
         if (FiltrosPilotF1.getGanadorMundial() != null) {
             StringBuscarPilotF1.append(" AND \"GanarMundialPilotos\" = ?");
-            Filtros.add(FiltrosPilotF1.getGanadorMundial());
+            ListaFiltros.add(FiltrosPilotF1.getGanadorMundial());
         }
 
         if (FiltrosPilotF1.getPosicionCampeonato() != null) {
             StringBuscarPilotF1.append(" AND \"PosicionCampeonato\" = ?");
-            Filtros.add(FiltrosPilotF1.getPosicionCampeonato());
+            ListaFiltros.add(FiltrosPilotF1.getPosicionCampeonato());
         }
 
         if (FiltrosPilotF1.getPuntosCampeonato() != null) {
             StringBuscarPilotF1.append(" AND \"PuntosCampeonato\" = ?");
-            Filtros.add(FiltrosPilotF1.getPuntosCampeonato());
+            ListaFiltros.add(FiltrosPilotF1.getPuntosCampeonato());
         }
 
         if (FiltrosPilotF1.getVictorias() != null) {
             StringBuscarPilotF1.append(" AND \"Victorias\" = ?");
-            Filtros.add(FiltrosPilotF1.getVictorias());
+            ListaFiltros.add(FiltrosPilotF1.getVictorias());
         }
 
         if (FiltrosPilotF1.getPoles() != null) {
             StringBuscarPilotF1.append(" AND \"Poles\" = ?");
-            Filtros.add(FiltrosPilotF1.getPoles());
+            ListaFiltros.add(FiltrosPilotF1.getPoles());
         }
 
         if (FiltrosPilotF1.getN_campeonatos() != null) {
             StringBuscarPilotF1.append(" AND \"N_Campeonato\" = ?");
-            Filtros.add(FiltrosPilotF1.getN_campeonatos());
+            ListaFiltros.add(FiltrosPilotF1.getN_campeonatos());
         }
 
         if (FiltrosPilotF1.getTotal_Carreras() != null) {
             StringBuscarPilotF1.append(" AND \"TotalCarreras\" = ?");
-            Filtros.add(FiltrosPilotF1.getTotal_Carreras());
+            ListaFiltros.add(FiltrosPilotF1.getTotal_Carreras());
         }
 
         try (Connection connection = DataConnection.getConnection(); PreparedStatement Filtrado = connection.prepareStatement(StringBuscarPilotF1.toString())) {
-            for (int i = 0; i < Filtros.size(); i++) {
-                Filtrado.setObject(i + 1, Filtros.get(i));
+            for (int i = 0; i < ListaFiltros.size(); i++) {
+                Filtrado.setObject(i + 1, ListaFiltros.get(i));
             }
 
             try (ResultSet resultSet = Filtrado.executeQuery()) {
@@ -130,13 +128,13 @@ public class PilotF1DAO {
                     DBDatos.setN_campeonatos(resultSet.getInt("N_Campeonato"));
                     DBDatos.setTotal_Carreras(resultSet.getInt("TotalCarreras"));
 
-                    DBData.add(DBDatos);
+                    ListaDBData.add(DBDatos);
                 }
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        System.out.println(DBData.toString());
-        return DBData;
+        System.out.println(ListaDBData.toString());
+        return ListaDBData;
     }
 }
