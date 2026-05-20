@@ -31,11 +31,11 @@ public class StartPanel extends JPanel {
         btn.setForeground(Color.WHITE);
         btn.setFont(new Font("SansSerif", Font.BOLD, 24));
         btn.setFocusPainted(false);
-        btn.setBorder(BorderFactory.createLineBorder(new Color(225, 6, 0), 1)); // Borde rojo sutil
+        btn.setBorder(BorderFactory.createLineBorder(new Color(225, 6, 0), 1));
 
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent e) { btn.setBackground(new Color(225, 6, 0)); }
-            public void mouseExited(java.awt.event.MouseEvent e) { btn.setBackground(new Color(40, 40, 40)); }
+            public void MouseSeleccionado(java.awt.event.MouseEvent e) { btn.setBackground(new Color(225, 6, 0)); }
+            public void MouseNoSeleccionado(java.awt.event.MouseEvent e) { btn.setBackground(new Color(40, 40, 40)); }
         });
 
         return btn;
