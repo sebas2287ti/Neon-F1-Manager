@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UiFactory {
 
-    public static JButton CrearBotom (String simbolo, int x, int y, int w, int h, Color Background, Color Text, Color Lateral) {
+    public static JButton CrearBotom (String simbolo, int x, int y, int w, int h, Color Background, Color Text, Color Lateral, Color Text2) {
         JButton Boton = new JButton(simbolo);
 
         Boton.setBounds(x, y, w, h);
@@ -17,8 +17,8 @@ public class UiFactory {
         Boton.setBorder(BorderFactory.createLineBorder(Lateral, 1));
 
         Boton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent e) { Boton.setBackground(Lateral); }
-            public void mouseExited(java.awt.event.MouseEvent e) { Boton.setBackground(Background); }
+            public void mouseEntered(java.awt.event.MouseEvent e) { Boton.setBackground(Lateral); Boton.setForeground(Text2);}
+            public void mouseExited(java.awt.event.MouseEvent e) { Boton.setBackground(Background); Boton.setForeground(Text); }
         });
 
         return Boton;
