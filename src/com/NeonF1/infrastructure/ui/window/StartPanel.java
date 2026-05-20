@@ -2,6 +2,7 @@ package com.NeonF1.infrastructure.ui.window;
 
 import java.awt.*;
 import com.NeonF1.infrastructure.ui.components.ControlerInterface;
+import com.NeonF1.infrastructure.ui.components.UiFactory;
 
 import javax.swing.*;
 
@@ -14,14 +15,13 @@ public class StartPanel extends JPanel {
         setLayout(null);
         setBackground(new Color(15, 15, 15));
 
-        JButton btnHome = crearBotonIcono("⌂", 1170, 20);
-        add(btnHome);
+        JButton botonHome = UiFactory.CrearBotom("⌂", 1170, 20, 50, 50, new Color(40, 40, 40), Color.WHITE, new Color(225, 6, 0));
+        JButton botonExit = UiFactory.CrearBotom("\uD83D\uDD0D", 1100, 20, 50, 50, new Color(40, 40, 40), Color.WHITE, new Color(225, 6, 0));
 
+        add(botonHome);
+        add(botonExit);
 
-        JButton btnExit = crearBotonIcono("\uD83D\uDD0D", 1100, 20);
-        add(btnExit);
-
-        btnHome.addActionListener(e -> System.exit(0));
+        botonHome.addActionListener(e -> System.exit(0));
     }
 
     private JButton crearBotonIcono(String simbolo, int x, int y) {
