@@ -16,11 +16,11 @@ public class StartPanel extends Background {
 
         setLayout(null);
 
-        JButton botonHome = UiFactory.CrearBotom("⌂", 870, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
-        JButton botonExit = UiFactory.CrearBotom("\uD83D\uDD0D", 920, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
-        JButton Boton1 = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 970, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
-        JButton Boton2 = UiFactory.CrearBotom("\uD83D\uDE99", 1020, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
-        JButton Boton3 = UiFactory.CrearBotom("\uD83C\uDFC1", 1070, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0));
+        JButton botonHome = UiFactory.CrearBotom("⌂", 870, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0),Color.WHITE);
+        JButton botonExit = UiFactory.CrearBotom("\uD83D\uDD0D", 920, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0),Color.WHITE);
+        JButton Boton1 = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 970, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0),Color.WHITE);
+        JButton Boton2 = UiFactory.CrearBotom("\uD83D\uDE99", 1020, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0),Color.WHITE);
+        JButton Boton3 = UiFactory.CrearBotom("\uD83C\uDFC1", 1070, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, new Color(225, 6, 0),Color.WHITE);
 
 
 
@@ -31,5 +31,6 @@ public class StartPanel extends Background {
         add(Boton3);
 
         botonHome.addActionListener(e -> System.exit(0));
+        botonExit.addActionListener(e -> controller.cambiarPanel("Formulario") );
     }
 }
