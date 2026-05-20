@@ -23,4 +23,14 @@ public class UiFactory {
 
         return Boton;
     }
+
+    public static JScrollPane CrearTabla (String simbolo, int x, int y, int w, int h, Color Background, Color Text, Color Lateral) {
+        //no tengo ni idea como crearlo
+        return new JScrollPane();
+    }
+
+    public static JPanel CrearFormulario () {
+        //no tengo ni idea como crearlo x2
+        return new JPanel();
+    }
 }
