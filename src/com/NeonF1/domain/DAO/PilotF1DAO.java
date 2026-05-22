@@ -18,24 +18,26 @@ public class PilotF1DAO {
 
         try (Connection connection = DataConnection.getConnection(); PreparedStatement Insert = connection.prepareStatement(StringInsert)) {
 
-            Insert.setInt(1, NewPilotF1.getAño());
-            Insert.setString(2, NewPilotF1.getEquipo());
-            Insert.setString(3, NewPilotF1.getNombre());
-            Insert.setInt(4, NewPilotF1.getN_Piloto());
-            Insert.setBoolean(5, NewPilotF1.getPilotoPrincipal());
-            Insert.setBoolean(6, NewPilotF1.getGanadorMundial());
-            Insert.setInt(7, NewPilotF1.getPosicionCampeonato());
-            Insert.setInt(8, NewPilotF1.getPuntosCampeonato());
-            Insert.setInt(9, NewPilotF1.getVictorias());
-            Insert.setInt(10, NewPilotF1.getPoles());
-            Insert.setInt(11, NewPilotF1.getN_campeonatos());
-            Insert.setInt(12, NewPilotF1.getTotal_Carreras());
+            Insert.setObject(1, NewPilotF1.getAño());
+            Insert.setObject(2, NewPilotF1.getEquipo());
+            Insert.setObject(3, NewPilotF1.getNombre());
+            Insert.setObject(4, NewPilotF1.getN_Piloto());
+            Insert.setObject(5, NewPilotF1.getPilotoPrincipal());
+            Insert.setObject(6, NewPilotF1.getGanadorMundial());
+            Insert.setObject(7, NewPilotF1.getPosicionCampeonato());
+            Insert.setObject(8, NewPilotF1.getPuntosCampeonato());
+            Insert.setObject(9, NewPilotF1.getVictorias());
+            Insert.setObject(10, NewPilotF1.getPoles());
+            Insert.setObject(11, NewPilotF1.getN_campeonatos());
+            Insert.setObject(12, NewPilotF1.getTotal_Carreras());
 
             Insert.executeUpdate();
 
         }
         catch (Exception e) {
+            e.printStackTrace();
             return false;
+
         }
         return true;
     }
@@ -45,9 +47,14 @@ public class PilotF1DAO {
         List<Object> ListaFiltros = new ArrayList<>();
         List<PilotF1> ListaDBData = new ArrayList<>();
 
+        if (FiltrosPilotF1.getId() != null) {
+            StringBuscarPilotF1.append(" AND \"id\" = ?");
+            ListaFiltros.add(FiltrosPilotF1.getId());
+        }
+
         if (FiltrosPilotF1.getAño() != null) {
             StringBuscarPilotF1.append(" AND \"Año\" = ?");
-            ListaFiltros.add(FiltrosPilotF1.getAño().toString());
+            ListaFiltros.add(FiltrosPilotF1.getAño());
         }
 
         if (FiltrosPilotF1.getEquipo() != null && !FiltrosPilotF1.getEquipo().trim().isEmpty()) {
@@ -114,7 +121,7 @@ public class PilotF1DAO {
                 while (resultSet.next()) {
                     PilotF1 DBDatos = new PilotF1();
 
-                    DBDatos.setId(resultSet.getInt("id")); // O el tipo de dato que uses para tu ID
+                    DBDatos.setId(resultSet.getInt("id"));
                     DBDatos.setAño(resultSet.getInt("Año"));
                     DBDatos.setEquipo(resultSet.getString("Equipo"));
                     DBDatos.setNombre(resultSet.getString("Nombre"));
