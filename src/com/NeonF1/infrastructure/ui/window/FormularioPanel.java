@@ -1,6 +1,7 @@
     package com.NeonF1.infrastructure.ui.window;
 
     import com.NeonF1.domain.DAO.PilotF1DAO;
+    import com.NeonF1.domain.entities.PilotF1;
     import com.NeonF1.infrastructure.ui.components.Background;
     import com.NeonF1.infrastructure.ui.components.ControlerInterface;
     import com.NeonF1.infrastructure.ui.components.UiFactory;
@@ -8,11 +9,13 @@
     import javax.swing.*;
     import java.awt.*;
     import java.util.LinkedHashMap;
+    import java.util.List;
     import java.util.Map;
 
     public class FormularioPanel extends Background {
         private ControlerInterface controler;
         private Map<String, JComponent> componentesFormulario;
+        private JScrollPane tablaScrollActual = null;
 
 
         private Map<String, JTextField> camposEquipo;
@@ -39,6 +42,20 @@
             componentesFormulario = UiFactory.CrearFormularioInteligente(this, campos, 22, 180, 400, 420,"Guardar", piloto -> {
 
                 if ( PilotF1DAO.InsertPilot(piloto) == true) {
+                    List<PilotF1> resultados = new java.util.ArrayList<>();
+
+                    resultados.add(piloto);
+
+                    if (tablaScrollActual != null) {
+                        remove(tablaScrollActual);
+                    }
+
+                    tablaScrollActual = UiFactory.CrearTablaDesdeObjetos(resultados, 440, 350, 798, 248);
+
+                    add(tablaScrollActual);
+                    revalidate();
+                    repaint();
+
                     JOptionPane.showMessageDialog(this, "Piloto " + piloto.getNombre() + " guardado");
                 }
                 else {

@@ -15,6 +15,7 @@ import java.util.Map;
 public class BuscadorPanel extends Background {
     private ControlerInterface controler;
     private Map<String, JComponent> componentesBuscador;
+    private JScrollPane tablaScrollActual = null;
 
     public BuscadorPanel(ControlerInterface controler) {
 
@@ -43,6 +44,15 @@ public class BuscadorPanel extends Background {
 
             List<PilotF1> resultados = PilotF1DAO.BuscarPilotF1(piloto);
 
+            if (tablaScrollActual != null) {
+                remove(tablaScrollActual);
+            }
+
+            tablaScrollActual = UiFactory.CrearTablaDesdeObjetos(resultados, 440, 350, 798, 248);
+
+            add(tablaScrollActual);
+            revalidate();
+            repaint();
             JOptionPane.showMessageDialog(this, "Se encontraron " + resultados.size() + " pilotos.");
 
         });
