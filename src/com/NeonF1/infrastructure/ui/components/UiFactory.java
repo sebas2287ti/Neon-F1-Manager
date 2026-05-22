@@ -12,34 +12,38 @@ import java.util.function.Consumer;
 
 public class UiFactory {
 
-    public static JButton CrearBotom(String simbolo, int x, int y, int w, int h, Color Background, Color Text, Color Lateral, Color Text2) {
-        JButton Boton = new JButton(simbolo);
+    //Metodo de creacion de botones apartir de (Icono, Cordenadas x y, Ancho, Alto, Color del fondo, Color del Icono, Color de la margen, Color del icono al pasar encima de el)
+    public static JButton createButton(String symbol, int x, int y, int w, int h, Color background, Color text, Color border, Color reColorText) {
+        JButton button = new JButton(symbol);
 
-        Boton.setBounds(x, y, w, h);
-        Boton.setBackground(Background);
-        Boton.setForeground(Text);
-        Boton.setFont(new Font("SansSerif", Font.BOLD, 24));
-        Boton.setFocusPainted(false);
-        Boton.setBorder(BorderFactory.createLineBorder(Lateral, 1));
+        //Definicion de las caracteristicas del boton (posicion, color de fondo, color de borde)
+        button.setBounds(x, y, w, h);
+        button.setBackground(background);
+        button.setFont(new Font("SansSerif", Font.BOLD, 24));
+        button.setForeground(text);
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(border, 1));
 
-        Boton.addMouseListener(new java.awt.event.MouseAdapter() {
+        //Creacion de eventos cuando el mouse esta encima del boton y cuando no
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                Boton.setBackground(Lateral);
-                Boton.setForeground(Text2);
+                button.setBackground(border);
+                button.setForeground(reColorText);
             }
 
             public void mouseExited(java.awt.event.MouseEvent e) {
-                Boton.setBackground(Background);
-                Boton.setForeground(Text);
+                button.setBackground(background);
+                button.setForeground(text);
             }
         });
 
-        return Boton;
+        //retorno del boton totalmente creado para el uso
+        return button;
     }
 
-    public static Map<String, JComponent> CrearFormularioInteligente(JPanel panel, Map<String, Class<?>> campos, int x, int y, int w, int h,String TextBoton, Consumer<PilotF1> alGuardar) {
+    public static Map<String, JComponent> CrearFormularioInteligente(JPanel panel, Map<String, Class<?>> campos, int x, int y, int w, int h,String TextBoton, Consumer<PilotF1> savePilotData) {
         Map<String, JComponent> componentesFormulario = new HashMap<>();
-        JPanel contenedor = new JPanel() {
+        JPanel container = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 Graphics2D g2d = (Graphics2D) g;
@@ -48,9 +52,9 @@ public class UiFactory {
                 g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
             }
         };
-        contenedor.setOpaque(false);
-        contenedor.setBounds(x, y, w, h);
-        contenedor.setLayout(null);
+        container.setOpaque(false);
+        container.setBounds(x, y, w, h);
+        container.setLayout(null);
 
         int margenIzquierdo = 20;
         int margenSuperior = 20;
@@ -74,7 +78,7 @@ public class UiFactory {
             Label.setForeground(Color.white);
             Label.setFont(fuenteLabel);
             Label.setBounds(margenIzquierdo, posicionY, anchoLabel, altoComponente);
-            contenedor.add(Label);
+            container.add(Label);
 
             JComponent componenteFinal;
 
@@ -93,7 +97,7 @@ public class UiFactory {
                 comboBox.setBackground(new Color(53, 56, 77));
                 comboBox.setForeground(Color.white);
                 comboBox.setBorder(BorderFactory.createLineBorder(new Color(225, 225, 225), 1));
-                contenedor.add(comboBox);
+                container.add(comboBox);
                 componenteFinal = comboBox;
             } else {
                 JTextField textField = new JTextField();
@@ -115,7 +119,7 @@ public class UiFactory {
                         }
                     });
                 }
-                contenedor.add(textField);
+                container.add(textField);
                 componenteFinal = textField;
             }
 
@@ -123,116 +127,135 @@ public class UiFactory {
             i++;
         }
 
-        int anchoBoton = 370;
-        int altoBoton = 24;
-        int botonX = 15;
-        int botonY = 384;
+        //Caracteristicas del boton
+        int wButton = 370;
+        int hButton = 24;
+        int xButton = 15;
+        int yButton = 384;
 
-        JButton botonG = CrearBotom(TextBoton, botonX, botonY, anchoBoton, altoBoton, new Color(43, 44, 65), Color.WHITE, Color.WHITE, Color.BLACK);
-        botonG.setFont(new Font("Arial", Font.BOLD, 13));
+        //Creacion del boton
+        JButton Button = createButton(TextBoton, xButton, yButton, wButton, hButton, new Color(43, 44, 65), Color.WHITE, Color.WHITE, Color.BLACK);
+        Button.setFont(new Font("Arial", Font.BOLD, 13));
 
-        botonG.addActionListener(e -> {
+        //Aciones del boton
+        Button.addActionListener(e -> {
             try {
-                PilotF1 piloto = new PilotF1();
-                if (campos.size() == 13 ){
-                    piloto.setId(obtenerEntero(componentesFormulario.get("id")));
-                }
-                piloto.setAño(obtenerEntero(componentesFormulario.get("año")));
-                piloto.setEquipo(obtenerString(componentesFormulario.get("equipo")));
-                piloto.setNombre(obtenerString(componentesFormulario.get("nombre")));
-                piloto.setN_Piloto(obtenerEntero(componentesFormulario.get("n_Piloto")));
-                piloto.setPilotoPrincipal(obtenerBooleano(componentesFormulario.get("pilotoPrincipal")));
-                piloto.setGanadorMundial(obtenerBooleano(componentesFormulario.get("ganadorMundial")));
-                piloto.setPosicionCampeonato(obtenerEntero(componentesFormulario.get("posicionCampeonato")));
-                piloto.setPuntosCampeonato(obtenerEntero(componentesFormulario.get("puntosCampeonato")));
-                piloto.setVictorias(obtenerEntero(componentesFormulario.get("victorias")));
-                piloto.setPoles(obtenerEntero(componentesFormulario.get("poles")));
-                piloto.setN_campeonatos(obtenerEntero(componentesFormulario.get("N_campeonatos")));
-                piloto.setTotal_Carreras(obtenerEntero(componentesFormulario.get("total_Carreras")));
+                //Creacion de un objecto al presionar el boton con toda la informacion dentro del formulario
+                PilotF1 pilotData = new PilotF1();
 
-                if (alGuardar != null) {
-                    alGuardar.accept(piloto);
+                //Esta if permite saber si es un buscador o un formulario de insercion dependiendo de cual sea se tiene que llenar correctamente para su uso posterior
+                if (campos.size() == 13 ){
+                    pilotData.setId(getInt(componentesFormulario.get("id")));
+                }
+                pilotData.setAño(getInt(componentesFormulario.get("año")));
+                pilotData.setEquipo(getString(componentesFormulario.get("equipo")));
+                pilotData.setNombre(getString(componentesFormulario.get("nombre")));
+                pilotData.setN_Piloto(getInt(componentesFormulario.get("n_Piloto")));
+                pilotData.setPilotoPrincipal(getBolean(componentesFormulario.get("pilotoPrincipal")));
+                pilotData.setGanadorMundial(getBolean(componentesFormulario.get("ganadorMundial")));
+                pilotData.setPosicionCampeonato(getInt(componentesFormulario.get("posicionCampeonato")));
+                pilotData.setPuntosCampeonato(getInt(componentesFormulario.get("puntosCampeonato")));
+                pilotData.setVictorias(getInt(componentesFormulario.get("victorias")));
+                pilotData.setPoles(getInt(componentesFormulario.get("poles")));
+                pilotData.setN_campeonatos(getInt(componentesFormulario.get("N_campeonatos")));
+                pilotData.setTotal_Carreras(getInt(componentesFormulario.get("total_Carreras")));
+
+                //Si la creacion del objecto es exitosa se procede a devolver mediante un callback o retorno para el uso del objecto pilotf1
+                if (savePilotData != null) {
+                    savePilotData.accept(pilotData);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(panel, "Error al procesar los datos del formulario: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        contenedor.add(botonG);
-        contenedor.putClientProperty("botonG", "bOTON GUARDAR");
-        panel.add(contenedor);
+        //Añadir el boton al contenedor que tendra
+        container.add(Button);
+        container.putClientProperty("Button", "Save Button");
+        panel.add(container);
 
         return componentesFormulario;
     }
 
-    public static JScrollPane CrearTablaDesdeObjetos(java.util.List<?> listaDatos, int x, int y, int w, int h) {
-        String[] titulos = {
+    //Metodo de cracion de la tabla
+    public static JScrollPane createTable(java.util.List<?> listDataDB, int x, int y, int w, int h) {
+
+        //Titulos que tendra la tabla
+        String[] tittles = {
                 "ID", "Año", "Equipo", "Nombre", "N° Piloto", "Piloto Principal", "Ganador Mundial", "Posición", "Puntos", "Victorias", "Poles", "N° Campeonatos", "Total Carreras"
         };
 
-        DefaultTableModel modelo = new DefaultTableModel(titulos, 0) {
+        //Configurar toda la tabla para que no se pueda editar
+        DefaultTableModel model = new DefaultTableModel(tittles, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
 
-        if (!listaDatos.isEmpty()) {
-            for (Object obj: listaDatos) {
-                PilotF1 piloto = (PilotF1) obj;
+        //Llenado de toda la tabla mediante la lista de objectos que contiene toda la informacion de las filas de la DataBase
+        if (!listDataDB.isEmpty()) {
+            for (Object obj: listDataDB) {
+                PilotF1 pilotDataRow = (PilotF1) obj;
                 Object[] fila = {
-                        piloto.getId() != null ? piloto.getId() : "",
-                        piloto.getAño() != null ? piloto.getAño() : "",
-                        piloto.getEquipo() != null ? piloto.getEquipo() : "",
-                        piloto.getNombre() != null ? piloto.getNombre() : "",
-                        piloto.getN_Piloto() != null ? piloto.getN_Piloto() : "",
-                        piloto.getPilotoPrincipal() != null ? (piloto.getPilotoPrincipal() ? "Sí" : "No") : "",
-                        piloto.getGanadorMundial() != null ? (piloto.getGanadorMundial() ? "Sí" : "No") : "",
-                        piloto.getPosicionCampeonato() != null ? piloto.getPosicionCampeonato() : "",
-                        piloto.getPuntosCampeonato() != null ? piloto.getPuntosCampeonato() : "",
-                        piloto.getVictorias() != null ? piloto.getVictorias() : "",
-                        piloto.getPoles() != null ? piloto.getPoles() : "",
-                        piloto.getN_campeonatos() != null ? piloto.getN_campeonatos() : "",
-                        piloto.getTotal_Carreras() != null ? piloto.getTotal_Carreras() : ""
+                        pilotDataRow.getId() != null ? pilotDataRow.getId() : "",
+                        pilotDataRow.getAño() != null ? pilotDataRow.getAño() : "",
+                        pilotDataRow.getEquipo() != null ? pilotDataRow.getEquipo() : "",
+                        pilotDataRow.getNombre() != null ? pilotDataRow.getNombre() : "",
+                        pilotDataRow.getN_Piloto() != null ? pilotDataRow.getN_Piloto() : "",
+                        pilotDataRow.getPilotoPrincipal() != null ? (pilotDataRow.getPilotoPrincipal() ? "Sí" : "No") : "",
+                        pilotDataRow.getGanadorMundial() != null ? (pilotDataRow.getGanadorMundial() ? "Sí" : "No") : "",
+                        pilotDataRow.getPosicionCampeonato() != null ? pilotDataRow.getPosicionCampeonato() : "",
+                        pilotDataRow.getPuntosCampeonato() != null ? pilotDataRow.getPuntosCampeonato() : "",
+                        pilotDataRow.getVictorias() != null ? pilotDataRow.getVictorias() : "",
+                        pilotDataRow.getPoles() != null ? pilotDataRow.getPoles() : "",
+                        pilotDataRow.getN_campeonatos() != null ? pilotDataRow.getN_campeonatos() : "",
+                        pilotDataRow.getTotal_Carreras() != null ? pilotDataRow.getTotal_Carreras() : ""
                 };
-                modelo.addRow(fila);
+                model.addRow(fila);
             }
         }
 
-        JTable tabla = new JTable(modelo);
+        //Personalizacion de la tabla
+        JTable tabla = new JTable(model);
         tabla.setFillsViewportHeight(true);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tabla.getTableHeader().setReorderingAllowed(false);
         tabla.setFocusable(false);
 
+        //persnalizacion de las filas
         tabla.setBackground(new Color(53, 56, 77));
         tabla.setForeground(Color.WHITE);
         tabla.setGridColor(new Color(43, 44, 65));
         tabla.setFont(new Font("Arial", Font.PLAIN, 12));
         tabla.setRowHeight(25);
 
+        //personalizacion de todos los titulos de la tabla
         tabla.getTableHeader().setBackground(new Color(30, 32, 43));
         tabla.getTableHeader().setForeground(Color.WHITE);
         tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 12));
         tabla.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(43, 44, 65), 1));
 
+        //Creacion del panel que permite contener la tabla la cual al ser tan grande se usara el un scrollpane que permite bajar
         JScrollPane scrollPane = new JScrollPane(tabla);
         scrollPane.setBounds(x, y, w, h);
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(43, 44, 65), 1));
         scrollPane.getViewport().setBackground(new Color(30, 32, 43));
 
+        //retorno del scrollpane
         return scrollPane;
     }
 
-
-    private static String obtenerString(JComponent comp) {
+    //Metodo para extraer el texto del un JtextField y realizarle una limpieza
+    private static String getString(JComponent comp) {
         if (comp instanceof JTextField) {
             return ((JTextField) comp).getText().trim();
         }
         return null;
     }
 
-    private static Integer obtenerEntero(JComponent comp) {
+    //Metodo para extraer el numero del un JtextField y pasarlo a string con una limpieza
+    private static Integer getInt(JComponent comp) {
         if (comp instanceof JTextField) {
             String texto = ((JTextField) comp).getText().trim();
             if (!texto.isEmpty()) {
@@ -246,7 +269,8 @@ public class UiFactory {
         return null;
     }
 
-    private static Boolean obtenerBooleano(JComponent comp) {
+    //Metodo para extraer el numero del un JtextField y pasarlo a string con una limpieza
+    private static Boolean getBolean(JComponent comp) {
         if (comp instanceof JComboBox) {
             String seleccionado = (String) ((JComboBox<?>) comp).getSelectedItem();
             if (seleccionado.equals("Sí")) {

@@ -12,13 +12,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BuscadorPanel extends Background {
+public class FindPanel extends Background {
     private ControlerInterface controler;
     private Map<String, JComponent> componentesBuscador;
     private JScrollPane tablaScrollActual = null;
 
-    public BuscadorPanel(ControlerInterface controler) {
-
+    public FindPanel(ControlerInterface controler) {
+        //llamar a la clase padre para que pinte el fondo
         super("/Image/Pruebas.jpeg");
         this.controler = controler;
 
@@ -48,7 +48,7 @@ public class BuscadorPanel extends Background {
                 remove(tablaScrollActual);
             }
 
-            tablaScrollActual = UiFactory.CrearTablaDesdeObjetos(resultados, 440, 350, 798, 248);
+            tablaScrollActual = UiFactory.createTable(resultados, 440, 350, 798, 248);
 
             add(tablaScrollActual);
             revalidate();
@@ -57,11 +57,11 @@ public class BuscadorPanel extends Background {
 
         });
 
-        JButton botonHome = UiFactory.CrearBotom("⌂", 60, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton botonBuscar = UiFactory.CrearBotom("\uD83D\uDD0D", 110, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton botonFormulario = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 160, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton Boton2 = UiFactory.CrearBotom("\uD83D\uDE99", 210, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton BotonExit = UiFactory.CrearBotom("\uD83C\uDFC1", 260, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton botonHome = UiFactory.createButton("⌂", 60, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton botonBuscar = UiFactory.createButton("\uD83D\uDD0D", 110, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton botonFormulario = UiFactory.createButton("\uD83C\uDFCE\uFE0F", 160, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton Boton2 = UiFactory.createButton("\uD83D\uDE99", 210, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton BotonExit = UiFactory.createButton("\uD83C\uDFC1", 260, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
 
         add(botonHome);
         add(botonBuscar);
@@ -69,9 +69,9 @@ public class BuscadorPanel extends Background {
         add(Boton2);
         add(BotonExit);
 
-        botonHome.addActionListener(e -> controler.cambiarPanel("MenuInicio"));
-        botonFormulario.addActionListener(e -> controler.cambiarPanel("Formulario") );
-        botonBuscar.addActionListener(e -> controler.cambiarPanel("PantallaBuscador") );
+        botonHome.addActionListener(e -> controler.panelChange("StartPanel"));
+        botonFormulario.addActionListener(e -> controler.panelChange("FormPanel") );
+        botonBuscar.addActionListener(e -> controler.panelChange("FindPanel") );
         BotonExit.addActionListener(e -> System.exit(0));
     }
 }
