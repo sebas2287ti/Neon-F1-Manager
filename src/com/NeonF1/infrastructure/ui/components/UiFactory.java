@@ -3,13 +3,10 @@ import com.NeonF1.domain.entities.PilotF1;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.tools.FileObject;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -168,6 +165,64 @@ public class UiFactory {
         return componentesFormulario;
     }
 
+    public static JScrollPane CrearTablaDesdeObjetos(java.util.List<?> listaDatos, int x, int y, int w, int h) {
+        String[] titulos = {
+                "ID", "Año", "Equipo", "Nombre", "N° Piloto", "Piloto Principal", "Ganador Mundial", "Posición", "Puntos", "Victorias", "Poles", "N° Campeonatos", "Total Carreras"
+        };
+
+        DefaultTableModel modelo = new DefaultTableModel(titulos, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        if (!listaDatos.isEmpty()) {
+            for (Object obj: listaDatos) {
+                PilotF1 piloto = (PilotF1) obj;
+                Object[] fila = {
+                        piloto.getId() != null ? piloto.getId() : "",
+                        piloto.getAño() != null ? piloto.getAño() : "",
+                        piloto.getEquipo() != null ? piloto.getEquipo() : "",
+                        piloto.getNombre() != null ? piloto.getNombre() : "",
+                        piloto.getN_Piloto() != null ? piloto.getN_Piloto() : "",
+                        piloto.getPilotoPrincipal() != null ? (piloto.getPilotoPrincipal() ? "Sí" : "No") : "",
+                        piloto.getGanadorMundial() != null ? (piloto.getGanadorMundial() ? "Sí" : "No") : "",
+                        piloto.getPosicionCampeonato() != null ? piloto.getPosicionCampeonato() : "",
+                        piloto.getPuntosCampeonato() != null ? piloto.getPuntosCampeonato() : "",
+                        piloto.getVictorias() != null ? piloto.getVictorias() : "",
+                        piloto.getPoles() != null ? piloto.getPoles() : "",
+                        piloto.getN_campeonatos() != null ? piloto.getN_campeonatos() : "",
+                        piloto.getTotal_Carreras() != null ? piloto.getTotal_Carreras() : ""
+                };
+                modelo.addRow(fila);
+            }
+        }
+
+        JTable tabla = new JTable(modelo);
+        tabla.setFillsViewportHeight(true);
+        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tabla.getTableHeader().setReorderingAllowed(false);
+        tabla.setFocusable(false);
+
+        tabla.setBackground(new Color(53, 56, 77));
+        tabla.setForeground(Color.WHITE);
+        tabla.setGridColor(new Color(43, 44, 65));
+        tabla.setFont(new Font("Arial", Font.PLAIN, 12));
+        tabla.setRowHeight(25);
+
+        tabla.getTableHeader().setBackground(new Color(30, 32, 43));
+        tabla.getTableHeader().setForeground(Color.WHITE);
+        tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 12));
+        tabla.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(43, 44, 65), 1));
+
+        JScrollPane scrollPane = new JScrollPane(tabla);
+        scrollPane.setBounds(x, y, w, h);
+        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(43, 44, 65), 1));
+        scrollPane.getViewport().setBackground(new Color(30, 32, 43));
+
+        return scrollPane;
+    }
 
 
     private static String obtenerString(JComponent comp) {
@@ -206,6 +261,5 @@ public class UiFactory {
         }
         return null;
     }
-
 }
 
