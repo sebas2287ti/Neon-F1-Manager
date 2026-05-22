@@ -1,35 +1,38 @@
     package com.NeonF1.infrastructure.ui.components;
 
-    import com.NeonF1.infrastructure.ui.window.FormularioPanel;
+    import com.NeonF1.infrastructure.ui.window.FormPanel;
     import com.NeonF1.infrastructure.ui.window.StartPanel;
-    import com.NeonF1.infrastructure.ui.window.BuscadorPanel;
+    import com.NeonF1.infrastructure.ui.window.FindPanel;
 
     import javax.swing.*;
     import java.awt.*;
 
     public class ControlerInterface {
-        private JFrame window;
-        private CardLayout cardLayout;
-        private JPanel container;
+        private final CardLayout CARDLAYOUT;
+        private final JPanel CONTAINER;
 
-        public ControlerInterface(JFrame window) {
-            this.window = window;
-            this.cardLayout = new CardLayout();
-            this.container = new JPanel(cardLayout);
+        //Creacion del controlador de la interfaz
+        public ControlerInterface(JFrame windowMain) {
+            this.CARDLAYOUT = new CardLayout();
+            this.CONTAINER = new JPanel(CARDLAYOUT);
 
+            //Inicializacion de los paneles con este controlador
             StartPanel startPanel =  new StartPanel(this);
-            FormularioPanel formularioPanel = new FormularioPanel(this);
-            BuscadorPanel panelBuscador = new BuscadorPanel(this);
+            FormPanel formPanel = new FormPanel(this);
+            FindPanel findPanel = new FindPanel(this);
 
-            container.add(startPanel, "MenuInicio");
-            container.add(formularioPanel, "Formulario");
-            container.add(panelBuscador, "PantallaBuscador");
+            //Agregar los paneles inicializados al panel container el cual los contendra a todos
+            CONTAINER.add(startPanel, "StartPanel");
+            CONTAINER.add(formPanel, "FormPanel");
+            CONTAINER.add(findPanel, "FindPanel");
 
-            window.add(container);
-            window.setVisible(true);
+            //Agregar el panel contenedor a la ventana principal donde se mostrara
+            windowMain.add(CONTAINER);
+            windowMain.setVisible(true);
         }
 
-        public void cambiarPanel(String nombrePanel) {
-            cardLayout.show(container, nombrePanel);
+        //Metodo que permite cambiar entre paneles visibles y no visibles en la ventana Principal
+        public void panelChange(String panelName) {
+            CARDLAYOUT.show(CONTAINER, panelName);
         }
     }
