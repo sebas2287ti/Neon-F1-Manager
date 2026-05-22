@@ -39,7 +39,7 @@ public class BuscadorPanel extends Background {
         campos.put("N_campeonatos", Integer.class);
         campos.put("total_Carreras", Integer.class);
 
-        componentesBuscador = UiFactory.CrearFormularioInteligente(this, campos, 22, 80, 400, 520, piloto -> {
+        componentesBuscador = UiFactory.CrearFormularioInteligente(this, campos, 22, 80, 400, 520,"Buscar", piloto -> {
 
             List<PilotF1> resultados = PilotF1DAO.BuscarPilotF1(piloto);
 
