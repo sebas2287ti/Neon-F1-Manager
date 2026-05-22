@@ -15,9 +15,8 @@ public class NeonF1Manager {
             windowMain.setLocationRelativeTo(null);
             windowMain.setResizable(false);
 
-            //Iniciar el controlador de todos los paneles dentro de la ventana principal
+            //Iniciar el controlador de todos los paneles dentro de la ventana principal y volverla visible
             ControlerInterface controler = new ControlerInterface(windowMain);
-
             windowMain.setVisible(true);
         });
     }
