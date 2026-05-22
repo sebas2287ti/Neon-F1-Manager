@@ -15,7 +15,7 @@ public class PilotF1 {
     private Integer N_campeonatos;
     private Integer total_Carreras;
 
-    public PilotF1(Integer id, Integer año, String equipo, String nombre, Integer n_Piloto, Boolean pilotoPrincipal, Boolean ganadorMundial, Integer posicionCampeonato, Integer victorias, Integer poles, Integer N_campeonatos, Integer total_Carrers) {
+    public PilotF1(Integer id, Integer año, String equipo, String nombre, Integer n_Piloto, Boolean pilotoPrincipal, Boolean ganadorMundial, Integer posicionCampeonato,Integer puntosCampeonato, Integer victorias, Integer poles, Integer N_campeonatos, Integer total_Carreras) {
         this.id = id;
         this.año = año;
         this.equipo = equipo;
@@ -24,14 +24,14 @@ public class PilotF1 {
         this.pilotoPrincipal = pilotoPrincipal;
         this.ganadorMundial = ganadorMundial;
         this.posicionCampeonato = posicionCampeonato;
+        this.puntosCampeonato = puntosCampeonato;
         this.victorias = victorias;
         this.poles = poles;
         this.N_campeonatos = N_campeonatos;
-        this.total_Carreras = total_Carrers;
+        this.total_Carreras = total_Carreras;
     }
 
     public PilotF1() {
-
     }
 
     public Integer getId() {
