@@ -40,7 +40,7 @@ public class UiFactory {
         return Boton;
     }
 
-    public static Map<String, JComponent> CrearFormularioInteligente(JPanel panel, Map<String, Class<?>> campos, int x, int y, int w, int h, Consumer<PilotF1> alGuardar) {
+    public static Map<String, JComponent> CrearFormularioInteligente(JPanel panel, Map<String, Class<?>> campos, int x, int y, int w, int h,String TextBoton, Consumer<PilotF1> alGuardar) {
         Map<String, JComponent> componentesFormulario = new HashMap<>();
         JPanel contenedor = new JPanel() {
             @Override
@@ -126,12 +126,12 @@ public class UiFactory {
             i++;
         }
 
-        int anchoBoton = 140;
-        int altoBoton = 32;
-        int botonX = (w / 2) - (anchoBoton / 2);
-        int botonY = h - altoBoton - 20;
+        int anchoBoton = 370;
+        int altoBoton = 24;
+        int botonX = 15;
+        int botonY = 484;
 
-        JButton botonG = CrearBotom("Guardar", botonX, botonY, anchoBoton, altoBoton, new Color(225, 6, 0), Color.WHITE, Color.WHITE, Color.BLACK);
+        JButton botonG = CrearBotom(TextBoton, botonX, botonY, anchoBoton, altoBoton, new Color(43, 44, 65), Color.WHITE, Color.WHITE, Color.BLACK);
         botonG.setFont(new Font("Arial", Font.BOLD, 13));
 
         botonG.addActionListener(e -> {
@@ -195,10 +195,13 @@ public class UiFactory {
         if (comp instanceof JComboBox) {
             String seleccionado = (String) ((JComboBox<?>) comp).getSelectedItem();
             if (seleccionado.equals("Sí")) {
-                return "Sí".equals(seleccionado);
+                System.out.print("Sí".equals(seleccionado));
+                return true;
+
             }
             if (seleccionado.equals("No")) {
-                return "No".equals(seleccionado);
+                System.out.print("No".equals(seleccionado));
+                return false;
             }
         }
         return null;
