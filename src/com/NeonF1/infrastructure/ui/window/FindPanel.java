@@ -19,7 +19,7 @@ public class FindPanel extends Background {
 
     public FindPanel(ControlerInterface controler) {
         //llamar a la clase padre para que pinte el fondo
-        super("/Image/Pruebas.jpeg");
+        super("/Image/Buscador.jpg");
         this.controler = controler;
 
         setLayout(null);
@@ -40,7 +40,7 @@ public class FindPanel extends Background {
         campos.put("N_campeonatos", Integer.class);
         campos.put("total_Carreras", Integer.class);
 
-        componentesBuscador = UiFactory.CrearFormularioInteligente(this, campos, 22, 180, 400, 420,"Buscar", piloto -> {
+        componentesBuscador = UiFactory.CrearFormularioInteligente(this, campos, 28, 180, 388, 420,"Buscar", piloto -> {
 
             List<PilotF1> resultados = PilotF1DAO.BuscarPilotF1(piloto);
 

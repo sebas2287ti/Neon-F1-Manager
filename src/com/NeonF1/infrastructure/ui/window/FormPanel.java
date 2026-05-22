@@ -20,7 +20,7 @@
 
         private Map<String, JTextField> camposEquipo;
         public FormPanel(ControlerInterface controler) {
-            super("/Image/Pruebas.jpeg");
+            super("/Image/NuevoPiloto.jpg");
             this.controler = controler;
 
             setLayout(null);
