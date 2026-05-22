@@ -39,7 +39,7 @@ public class BuscadorPanel extends Background {
         campos.put("N_campeonatos", Integer.class);
         campos.put("total_Carreras", Integer.class);
 
-        componentesBuscador = UiFactory.CrearFormularioInteligente(this, campos, 22, 80, 400, 520,"Buscar", piloto -> {
+        componentesBuscador = UiFactory.CrearFormularioInteligente(this, campos, 22, 180, 400, 420,"Buscar", piloto -> {
 
             List<PilotF1> resultados = PilotF1DAO.BuscarPilotF1(piloto);
 
@@ -49,16 +49,19 @@ public class BuscadorPanel extends Background {
 
         JButton botonHome = UiFactory.CrearBotom("⌂", 60, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
         JButton botonBuscar = UiFactory.CrearBotom("\uD83D\uDD0D", 110, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton Boton1 = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 160, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton botonFormulario = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 160, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
         JButton Boton2 = UiFactory.CrearBotom("\uD83D\uDE99", 210, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton Boton3 = UiFactory.CrearBotom("\uD83C\uDFC1", 260, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        JButton BotonExit = UiFactory.CrearBotom("\uD83C\uDFC1", 260, 631, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
 
         add(botonHome);
         add(botonBuscar);
-        add(Boton1);
+        add(botonFormulario);
         add(Boton2);
-        add(Boton3);
+        add(BotonExit);
 
         botonHome.addActionListener(e -> controler.cambiarPanel("MenuInicio"));
+        botonFormulario.addActionListener(e -> controler.cambiarPanel("Formulario") );
+        botonBuscar.addActionListener(e -> controler.cambiarPanel("PantallaBuscador") );
+        BotonExit.addActionListener(e -> System.exit(0));
     }
 }
