@@ -36,7 +36,7 @@
             campos.put("N_campeonatos", Integer.class);
             campos.put("total_Carreras", Integer.class);
 
-            componentesFormulario = UiFactory.CrearFormularioInteligente(this, campos, 22, 80, 400, 520, piloto -> {
+            componentesFormulario = UiFactory.CrearFormularioInteligente(this, campos, 22, 80, 400, 520,"Guardar", piloto -> {
 
                 if ( PilotF1DAO.InsertPilot(piloto) == true) {
                     JOptionPane.showMessageDialog(this, "Piloto " + piloto.getNombre() + " guardado");
