@@ -32,5 +32,6 @@ public class StartPanel extends Background {
 
         botonHome.addActionListener(e -> System.exit(0));
         botonExit.addActionListener(e -> controller.cambiarPanel("Formulario") );
+        Boton1.addActionListener(e -> controller.cambiarPanel("PantallaBuscador") );
     }
 }
