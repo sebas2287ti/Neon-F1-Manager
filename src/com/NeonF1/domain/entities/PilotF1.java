@@ -1,5 +1,6 @@
 package com.NeonF1.domain.entities;
 
+//Definicion de la clases piloto y sus caracteritsticas
 public class PilotF1 {
     private Integer id;
     private Integer año;
@@ -15,6 +16,7 @@ public class PilotF1 {
     private Integer N_campeonatos;
     private Integer total_Carreras;
 
+    //Constructor completo
     public PilotF1(Integer id, Integer año, String equipo, String nombre, Integer n_Piloto, Boolean pilotoPrincipal, Boolean ganadorMundial, Integer posicionCampeonato,Integer puntosCampeonato, Integer victorias, Integer poles, Integer N_campeonatos, Integer total_Carreras) {
         this.id = id;
         this.año = año;
@@ -31,9 +33,11 @@ public class PilotF1 {
         this.total_Carreras = total_Carreras;
     }
 
+    //constructor vacio
     public PilotF1() {
     }
 
+    //Metodos get
     public Integer getId() {
         return id;
     }
