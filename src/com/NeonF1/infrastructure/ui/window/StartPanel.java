@@ -1,36 +1,44 @@
 package com.NeonF1.infrastructure.ui.window;
 
-import java.awt.*;
 import com.NeonF1.infrastructure.ui.components.Background;
 import com.NeonF1.infrastructure.ui.components.ControlerInterface;
 import com.NeonF1.infrastructure.ui.components.UiFactory;
 
+import java.awt.*;
 import javax.swing.*;
 
 public class StartPanel extends Background {
-    private ControlerInterface controler;
+    private final ControlerInterface CONTROLER;
 
-    public StartPanel(ControlerInterface controller) {
+    //metodo para la creacion de primer panel o StartPanel
+    public StartPanel(ControlerInterface controler) {
+        //llamar a la clase padre para que pinte el fondo
         super("/Image/FormulaPantallaInicio.jpeg");
-        this.controler = controller;
+        this.CONTROLER = controler;
 
         setLayout(null);
 
-        JButton botonHome = UiFactory.CrearBotom("⌂", 870, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton botonBuscar = UiFactory.CrearBotom("\uD83D\uDD0D", 870+ 50, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton botonFormulario = UiFactory.CrearBotom("\uD83C\uDFCE\uFE0F", 870+ 50*2, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton Boton2 = UiFactory.CrearBotom("\uD83D\uDE99", 870+ 50*3, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
-        JButton BotonExit = UiFactory.CrearBotom("\uD83C\uDFC1", 870 + 50*4, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.WHITE, Color.black);
+        /*
+        Creacion de los botones mediante el metodo de creacion en el UiFactory bajo la regla de creacion:
+        (Icono, Cordenadas x y, Ancho, Alto, Color del fondo, Color del Icono, Color de la margen, Color del icono al pasar encima de el)
+        */
+        JButton homeButton = UiFactory.createButton("⌂", 870, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
+        JButton findButton = UiFactory.createButton("\uD83D\uDD0D", 870 + 50, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
+        JButton formButton = UiFactory.createButton("\uD83C\uDFCE", 870 + 50 * 2, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
+        JButton testButton = UiFactory.createButton("\uD83D\uDE99", 870 + 50 * 3, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
+        JButton exitButton = UiFactory.createButton("\uD83C\uDFC1", 870 + 50 * 4, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
 
-        add(botonHome);
-        add(botonBuscar);
-        add(botonFormulario);
-        add(Boton2);
-        add(BotonExit);
+        //Añadir los iconos al panel para que se puedan visualizar
+        add(homeButton);
+        add(findButton);
+        add(formButton);
+        add(testButton);
+        add(exitButton);
 
-        botonHome.addActionListener(e -> controler.cambiarPanel("MenuInicio"));
-        botonFormulario.addActionListener(e -> controler.cambiarPanel("Formulario") );
-        botonBuscar.addActionListener(e -> controler.cambiarPanel("PantallaBuscador") );
-        BotonExit.addActionListener(e -> System.exit(0));
+        //Funciones de los botones (Salir, Cambiar de panel mediante el panelChange)
+        homeButton.addActionListener(_ -> this.CONTROLER.panelChange("StartPanel"));
+        formButton.addActionListener(_ -> this.CONTROLER.panelChange("FormPanel") );
+        findButton.addActionListener(_ -> this.CONTROLER.panelChange("FindPanel") );
+        exitButton.addActionListener(_ -> System.exit(0));
     }
 }
