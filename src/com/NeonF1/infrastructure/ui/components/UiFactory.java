@@ -95,7 +95,7 @@ public class UiFactory {
                 comboBox.setFont(fuenteComponentes);
                 comboBox.setBackground(new Color(53, 56, 77));
                 comboBox.setForeground(Color.white);
-                comboBox.setBorder(BorderFactory.createLineBorder(new Color(225, 6, 0), 1));
+                comboBox.setBorder(BorderFactory.createLineBorder(new Color(225, 225, 225), 1));
                 contenedor.add(comboBox);
                 componenteFinal = comboBox;
             } else {
@@ -105,7 +105,7 @@ public class UiFactory {
                 textField.setBackground(new Color(53, 56, 77));
                 textField.setForeground(Color.white);
                 textField.setCaretColor(Color.white);
-                textField.setBorder(BorderFactory.createLineBorder(new Color(225, 6, 0), 1));
+                textField.setBorder(BorderFactory.createLineBorder(new Color(225, 225, 225), 1));
 
                 if (tipoDato == Integer.class) {
                     textField.addKeyListener(new KeyAdapter() {
@@ -129,7 +129,7 @@ public class UiFactory {
         int anchoBoton = 370;
         int altoBoton = 24;
         int botonX = 15;
-        int botonY = 484;
+        int botonY = 384;
 
         JButton botonG = CrearBotom(TextBoton, botonX, botonY, anchoBoton, altoBoton, new Color(43, 44, 65), Color.WHITE, Color.WHITE, Color.BLACK);
         botonG.setFont(new Font("Arial", Font.BOLD, 13));
