@@ -2,7 +2,10 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+!**/.env
+env/.env
 .kotlin
+
 
 ### Eclipse ###
 .apt_generated
@@ -28,3 +31,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+
