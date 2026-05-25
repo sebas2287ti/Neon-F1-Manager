@@ -57,6 +57,7 @@ public class UiFactory {
                 g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
             }
         };
+
         container.setOpaque(false);
         container.setBounds(x, y, w, h);
         container.setLayout(null);
