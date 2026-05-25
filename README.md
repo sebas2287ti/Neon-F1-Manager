@@ -128,3 +128,14 @@ graph TD
     Model -.->|Updates View| UI
 
 ```
+
+<div align="center">
+
+**If this project helps your security work, consider giving it a ⭐**
+
+[⭐ Star](https://github.com/sebas2287ti/Neon-F1-Manager/stargazers) · [🍴 Fork](https://github.com/sebas2287ti/Neon-F1-Manager/fork) · [💬 Discuss](https://github.com/sebas2287ti/Neon-F1-Manager/discussions)
+
+by [Sebastian](https://github.com/sebas2287ti).  
+*This is an independent open-source project.*
+
+</div>
