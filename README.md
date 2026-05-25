@@ -90,3 +90,12 @@ NeonF1Manager/
                         └── StartPanel/
                             ├── StartPanel.java
                             └── StartPanel.form
+
+```
+
+```mermaid
+graph TD
+    %% Estilos de diseño
+    classDef ui fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff;
+
+```
