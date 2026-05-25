@@ -95,7 +95,32 @@ NeonF1Manager/
 
 ```mermaid
 graph TD
-    %% Estilos de diseño
-    classDef ui fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff;
+    %% Definición de Estilos
+    classDef ui fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px,color:#000;
+    classDef logic fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:#000;
+    classDef dao fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000;
+    classDef db fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#000;
+
+    %% Componentes
+    UI[Vista / Interfaz de Usuario]:::ui
+    Controller[Controlador / Lógica de Negocio]:::logic
+    Model[Modelo / Entidad de Datos]:::logic
+    
+    subgraph Capa de Persistencia
+        Interface[Interfaz DAO]:::dao
+        Impl[Implementación DAO]:::dao
+    end
+    
+    DB[(Base de Datos / Servidor)]:::db
+
+    %% Relaciones y Flujo
+    UI -->|Interactúa| Controller
+    Controller -->|Gestiona| Model
+    Controller -->|Solicita Datos| Interface
+    Interface -->|Define Contrato| Impl
+    Impl -->|Mapea Clases / Ejecuta SQL| DB
+    DB -.->|Retorna ResultSet / Filas| Impl
+    Impl -.->|Instancia y Retorna| Model
+    Model -.->|Actualiza Vista| UI
 
 ```
