@@ -4,11 +4,16 @@ import com.NeonF1.domain.entities.PilotF1;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.awt.Image;
 
 public class UiFactory {
 
@@ -212,6 +217,8 @@ public class UiFactory {
                         pilotDataRow.getN_campeonatos() != null ? pilotDataRow.getN_campeonatos() : "",
                         pilotDataRow.getTotal_Carreras() != null ? pilotDataRow.getTotal_Carreras() : ""
                 };
+
+                //Metodo que cambia a la siguiente fila de la tabla
                 model.addRow(fila);
             }
         }
@@ -244,6 +251,64 @@ public class UiFactory {
 
         //retorno del scrollpane
         return scrollPane;
+    }
+
+    //Metodo para la creacion de imagenes dentro de la interfaz
+    public JPanel imageCreate(int x, int y, int w, int h, ArrayList URLImage, Color Background) {
+        //Definicion basica de las variables que se usaran
+        JPanel container = new JPanel();
+        JLabel imageLabel = new JLabel();
+        final int[] i = {0};
+
+        //Obtencion de las URL de la primera imagen que se mostrara al cargar
+        URL firtUrl = getClass().getResource(URLImage.get(0).toString());
+        ImageIcon fistIconImage = new ImageIcon(firtUrl);
+        Image firtImageFix = fistIconImage.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+
+
+        //Definicion de donde ira el Jpanel contenedor
+        container.setOpaque(false);
+        container.setBounds(x, y, w, h);
+        container.setLayout(null);
+
+        //Colocacion de la primera imagen y ajuste del tamaño
+        imageLabel.setBounds(x, y, w, h);
+        imageLabel.setIcon(new ImageIcon(firtImageFix));
+
+
+        //Separacion del hilo de ejecucion mediante un timer //un while pero infinito para monos con la ejecucion del evento
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //Obtencion de las URL dentro del timer
+                String URLImages = (String) URLImage.get(i[0]); //no se por que no dejan usar directamente el array sin esto pero ya que
+                URL imagesFinalUrl = getClass().getResource(URLImages);
+
+                //Colocacion de las imagenes y actualizar o repintar todo el Jpanel o contenedor
+                ImageIcon originalIcon = new ImageIcon(imagesFinalUrl);
+                Image imageFix = originalIcon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+                imageLabel.setIcon(new ImageIcon(imageFix));
+                container.repaint();
+
+                //Aumento del ciclo
+                i[0]++;
+
+                //Caso if para que cada vez que se llegue al limite de imagenes se vuelva a 0 para hacerlo infinito
+                if (i[0] >= URLImage.size()) {
+                    i[0] = 0;
+                }
+            }
+        });
+
+        //Inicio del timer "While infinito"
+        timer.start();
+
+        //Añadir al contenedor todo nuestro carrusel de imagenes
+        container.add(imageLabel);
+
+        //Devolver el contenedor a donde sea que lo hayan llamado para ser usado
+        return container;
     }
 
     //Metodo para extraer el texto del un JtextField y realizarle una limpieza
