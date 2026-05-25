@@ -47,6 +47,8 @@ CREATE TABLE f1_pilots (
     totalcarreras SMALLINT NOT NULL
 );
 
+---
+
 ## Project Structure
 
 The repository follows a clean, decoupled architecture (inspired by Domain-Driven Design principles) to isolate core business rules from database frameworks and GUI implementation details.
@@ -84,3 +86,5 @@ NeonF1Manager/
                         └── StartPanel/
                             ├── StartPanel.java
                             └── StartPanel.form
+
+---
