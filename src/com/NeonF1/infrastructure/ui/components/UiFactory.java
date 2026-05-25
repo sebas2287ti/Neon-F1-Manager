@@ -254,7 +254,7 @@ public class UiFactory {
     }
 
     //Metodo para la creacion de imagenes dentro de la interfaz
-    public JPanel imageCreate(int x, int y, int w, int h, ArrayList URLImage, Color Background) {
+    public JPanel imageCreate(int x, int y, int w, int h, ArrayList URLImage) {
         //Definicion basica de las variables que se usaran
         JPanel container = new JPanel();
         JLabel imageLabel = new JLabel();
@@ -265,14 +265,13 @@ public class UiFactory {
         ImageIcon fistIconImage = new ImageIcon(firtUrl);
         Image firtImageFix = fistIconImage.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
 
-
         //Definicion de donde ira el Jpanel contenedor
         container.setOpaque(false);
         container.setBounds(x, y, w, h);
         container.setLayout(null);
 
         //Colocacion de la primera imagen y ajuste del tamaño
-        imageLabel.setBounds(x, y, w, h);
+        imageLabel.setBounds(0, 0, w, h);
         imageLabel.setIcon(new ImageIcon(firtImageFix));
 
 

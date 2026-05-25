@@ -14,7 +14,7 @@ public class StartPanel extends Background {
     //metodo para la creacion de primer panel o StartPanel
     public StartPanel(ControlerInterface controler) {
         //llamar a la clase padre para que pinte el fondo
-        super("/Image/FormulaPantallaInicio.jpeg");
+        super("/Image/Base/FormulaPantallaInicio.jpeg");
         this.CONTROLER = controler;
 
         setLayout(null);
@@ -29,19 +29,12 @@ public class StartPanel extends Background {
         JButton testButton = UiFactory.createButton("\uD83D\uDE99", 870 + 50 * 3, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
         JButton exitButton = UiFactory.createButton("\uD83C\uDFC1", 870 + 50 * 4, 415, 50, 50, new Color(41, 43, 58), Color.WHITE, Color.red, Color.black);
 
-        ArrayList images = new ArrayList<>();
-        images.add("/Image/Pruebas.jpeg");
-        images.add("/Image/NuevoPiloto.jpg");
-
-        JPanel image = new UiFactory().imageCreate(0, 0, 300,300, images, Color.WHITE);
-
         //Añadir los iconos al panel para que se puedan visualizar
         add(homeButton);
         add(findButton);
         add(formButton);
         add(testButton);
         add(exitButton);
-        add(image);
 
 
         //Funciones de los botones (Salir, Cambiar de panel mediante el panelChange)
