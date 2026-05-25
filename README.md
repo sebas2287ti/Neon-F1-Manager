@@ -131,11 +131,13 @@ graph TD
 
 <div align="center">
 
-**If this project helps your security work, consider giving it a ⭐**
+### 🌟 Support the project
 
-[⭐ Star](https://github.com/sebas2287ti/Neon-F1-Manager/stargazers) · [🍴 Fork](https://github.com/sebas2287ti/Neon-F1-Manager/fork) · [💬 Discuss](https://github.com/sebas2287ti/Neon-F1-Manager/discussions)
+**If this project improves your development or database workflows, please give it a ⭐**
 
-by [Sebastian](https://github.com/sebas2287ti).  
+[⭐ Star](https://github.com/sebas2287ti/Neon-F1-Manager/stargazers) · [🍴 Fork](https://github.com/sebas2287ti/Neon-F1-Manager/fork)
+
+by [Sebas2287ti](https://github.com/sebas2287ti).  
 *This is an independent open-source project.*
 
 </div>
