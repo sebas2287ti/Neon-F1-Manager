@@ -47,6 +47,8 @@ CREATE TABLE f1_pilots (
     totalcarreras SMALLINT NOT NULL
 );
 
+```
+
 ---
 
 ## 📦 Project Structure & Directory Tree
