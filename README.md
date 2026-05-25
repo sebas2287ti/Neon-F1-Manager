@@ -93,34 +93,38 @@ NeonF1Manager/
 
 ```
 
+### Project Diagram
+
+The project utilizes the DAO (Data Access Object) design pattern to separate the business logic from the data access logic, ensuring a modular, scalable, and easy-to-maintain codebase.
+
 ```mermaid
 graph TD
-    %% Definición de Estilos
+    %% Style Definitions
     classDef ui fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px,color:#000;
     classDef logic fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:#000;
     classDef dao fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000;
     classDef db fill:#eceff1,stroke:#607d8b,stroke-width:2px,color:#000;
 
-    %% Componentes
-    UI[Vista / Interfaz de Usuario]:::ui
-    Controller[Controlador / Lógica de Negocio]:::logic
-    Model[Modelo / Entidad de Datos]:::logic
+    %% Components
+    UI[View / User Interface]:::ui
+    Controller[Controller / Business Logic]:::logic
+    Model[Model / Data Entity]:::logic
     
-    subgraph Capa de Persistencia
-        Interface[Interfaz DAO]:::dao
-        Impl[Implementación DAO]:::dao
+    subgraph Persistence Layer
+        Interface[DAO Interface]:::dao
+        Impl[DAO Implementation]:::dao
     end
     
-    DB[(Base de Datos / Servidor)]:::db
+    DB[(Database / Server)]:::db
 
-    %% Relaciones y Flujo
-    UI -->|Interactúa| Controller
-    Controller -->|Gestiona| Model
-    Controller -->|Solicita Datos| Interface
-    Interface -->|Define Contrato| Impl
-    Impl -->|Mapea Clases / Ejecuta SQL| DB
-    DB -.->|Retorna ResultSet / Filas| Impl
-    Impl -.->|Instancia y Retorna| Model
-    Model -.->|Actualiza Vista| UI
+    %% Relationships and Flow
+    UI -->|Interacts with| Controller
+    Controller -->|Manages| Model
+    Controller -->|Requests Data| Interface
+    Interface -->|Defines Contract| Impl
+    Impl -->|Maps Classes / Executes SQL| DB
+    DB -.->|Returns ResultSet / Rows| Impl
+    Impl -.->|Instantiates & Returns| Model
+    Model -.->|Updates View| UI
 
 ```
