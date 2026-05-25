@@ -6,6 +6,10 @@
 
 ### The Ultimate Starting Grid Log
 
+<p align="center">
+  <img src="sources/Image/readmi/ImageInApp.png" alt="F1 Manager Banner" width="100%">
+</p>
+
 ## Introduction
 
 This repository contains an interactive database application called “Formula 1 Manager Database,” designed to simulate the real-world management of data on teams and their drivers throughout the season. By decoupling the logic of the graphical interface from data access through a robust Data Access Object (DAO) architecture, this system bridges the gap between a native, highly responsive graphical user interface (GUI) and a high-performance serverless Neon PostgreSQL backend.
@@ -42,3 +46,41 @@ CREATE TABLE f1_pilots (
     n_campeonato SMALLINT NOT NULL,
     totalcarreras SMALLINT NOT NULL
 );
+
+## Project Structure
+
+The repository follows a clean, decoupled architecture (inspired by Domain-Driven Design principles) to isolate core business rules from database frameworks and GUI implementation details.
+
+```text
+NeonF1Manager/
+├── Image/                        # Graphic assets for UI and design elements
+│   ├── Base/
+│   ├── F1Moments/
+│   └── Pilots/
+└── src/
+    └── com/
+        └── NeonF1/
+            ├── domain/           # Core business logic and enterprise rules
+            │   ├── DAO/          # Data Access Object abstractions
+            │   │   └── PilotF1DAO.java
+            │   └── entities/     # Domain models / Database entities
+            │       └── PilotF1.java
+            │
+            └── infrastructure/   # External frameworks, tools, and UI drivers
+                ├── persistence/  # Database connection and low-level drivers
+                │   └── DataConnection.java
+                └── ui/           # User Interface layer (Java Swing)
+                    ├── components/ # Reusable custom GUI components & factories
+                    │   ├── Background.java
+                    │   ├── ControlerInterface.java
+                    │   └── UiFactory.java
+                    └── window/   # Window layouts and interactive panels (.form files)
+                        ├── FindPanel/
+                        │   ├── FindPanel.java
+                        │   └── FindPanel.form
+                        ├── FormPanel/
+                        │   ├── FormPanel.java
+                        │   └── FormPanel.form
+                        └── StartPanel/
+                            ├── StartPanel.java
+                            └── StartPanel.form
