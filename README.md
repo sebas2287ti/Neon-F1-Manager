@@ -30,8 +30,6 @@ Before running the application, ensure you have the following installed and conf
 
 Connect to your Neon PostgreSQL instance and execute the following SQL script to create the definitive pilot registration table:
 
----
-
 ```sql
 CREATE TABLE f1_pilots (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -51,7 +49,7 @@ CREATE TABLE f1_pilots (
 
 ---
 
-## Project Structure
+## 📦 Project Structure & Directory Tree
 
 The repository follows a clean, decoupled architecture (inspired by Domain-Driven Design principles) to isolate core business rules from database frameworks and GUI implementation details.
 
@@ -90,5 +88,3 @@ NeonF1Manager/
                         └── StartPanel/
                             ├── StartPanel.java
                             └── StartPanel.form
-
----
